@@ -8,6 +8,7 @@ import com.cydeo.service.RoleService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -26,8 +27,9 @@ public class RoleServiceImpl implements RoleService {
         List<Role> roleList = roleRepository.findAll();
         //looking for DTO, we need to convert Entity to DTO
 
-
-        return roleList;
+        return roleList.stream()
+                .map(roleMapper::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
