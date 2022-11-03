@@ -6,11 +6,12 @@ import java.util.List;
 
 public interface UserService {
 
-    List<UserDTO> listAllUsers();
+    List<UserDTO> listAllUsers();  //DTO object in Service
 
-    UserDTO findByUserName(String username); //we need this method in update method
+    UserDTO findByUserName(String username); //we need this method to update user
 
     void save(UserDTO user);
     void deleteByUserName(String username);
+    UserDTO update (UserDTO user);
 
 }
