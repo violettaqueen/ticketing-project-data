@@ -23,14 +23,18 @@ public class Project extends BaseEntity{
 
     private String projectName;
 
+    @Column(columnDefinition = "DATE")
     private LocalDate startDate;
 
+    @Column(columnDefinition = "DATE")
     private LocalDate endDate;
+
     @Enumerated(value = EnumType.STRING)
     private Status projectStatus;
 
     private String projectDetail;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manager_id")
     private User assignedManager;
 
 }
