@@ -26,6 +26,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDTO> listAllUsers() {
+
         List<User> userList = userRepository.findAll(Sort.by("firstName"));
         return userList.stream()
                 .map(userMapper::convertToDTO)
@@ -54,7 +55,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO update(UserDTO user) {
 
-        //find current user, before updating it because view doesn't know about the Id
+        //find current user, before updating it because view doesn't know about the id
         //and will try to create a new User, and we need a specific user
         User user1 = userRepository.findByUserName(user.getUserName()); //has
         // Map update user dto to entity object
@@ -65,5 +66,13 @@ public class UserServiceImpl implements UserService {
         userRepository.save(convertedUser);
 
         return  findByUserName(user.getUserName());
+    }
+
+    @Override
+    public void delete(String username) {
+        //logic: 1. get user, set isDeleted to true, save user
+        User user = userRepository.findByUserName(username);
+        user.setIsDeleted(true);
+        userRepository.save(user);
     }
 }
