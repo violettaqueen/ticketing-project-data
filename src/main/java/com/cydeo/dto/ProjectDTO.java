@@ -1,4 +1,5 @@
 package com.cydeo.dto;
+
 import com.cydeo.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +19,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class ProjectDTO {
 
-
+    private Long id;
     @NotBlank
     private String projectName;
 

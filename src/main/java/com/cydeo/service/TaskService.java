@@ -8,10 +8,13 @@ public interface TaskService {
 
     List<TaskDTO> listAllTasks();
 
-    void save(TaskDTO task);
+    void save(TaskDTO dto);
     void delete (Long id);
     void update (TaskDTO dto);
     TaskDTO findById(Long id);
+
+    int totalNonCompletedTask(String projectCode);
+    int totalCompletedTask(String projectCode);
 
 
 }
