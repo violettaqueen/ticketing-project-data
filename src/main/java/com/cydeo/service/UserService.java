@@ -11,7 +11,7 @@ public interface UserService {
     UserDTO findByUserName(String username); //we need this method to update user
 
     void save(UserDTO user);
-    void deleteByUserName(String username);
+    //void deleteByUserName(String username);
     UserDTO update (UserDTO user);
     void delete(String username);
     List<UserDTO> listAllByRole(String role);
